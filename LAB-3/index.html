@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+    <link href="./fonts.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivering Custom Fonts</title>
+   
+</head>
+<style>
+    body {
+        font-family: 'Playwrite DE Grund', sans-serif; 
+        margin: 20px;
+    }
+    .p1 {
+        font-weight: 300; 
+    }
+    h1 {
+        color: violet;
+    }
+    p {
+        color:green;
+        line-height: 1.6;
+    }
+    ul {
+        margin: 10px 0;
+    }
+    
+</style>
+<body>
+    <h1>How to declare fontsize with server request for delivering to client</h1>
+    <p>Playwrite Deutschland Grundschrift is a distinctive typeface that embodies a playful yet legible design, making it suitable for various applications. This font features a unique blend of curves and straight lines, giving it a modern and approachable feel.
+    <p>Key Characteristics:</p>
+        <ul>
+            <li>Design: The font's whimsical elements and rounded shapes create a friendly appearance, ideal for children’s materials, branding, and informal communications.</span></li>
+            <li>Readability: Despite its playful style, the font maintains high legibility, ensuring that text remains easy to read even at smaller sizes.</li>
+            <li>Versatility: Playwrite Deutschland Grundschrift can be effectively used across different mediums, including print, digital, and signage, making it a versatile choice for designers.</li>
+        </ul> 
+        <footer>
+            <p>Last updated: 
+                <span id="lastModified"></span>
+            </p>
+        </footer>
+        <script type="text/javascript">
+             var x = document.lastModified;
+             document.getElementById('lastModified').textContent = x;
+        </script>
+</body>
+</html>
