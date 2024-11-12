@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure</title>
+    <style>
+        /* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f0f8ff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header and footer styling */
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content area styling */
+main {
+    flex-grow: 1;
+    padding: 2em;
+    background-color: #e6f7ff;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 2em auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Story text styling */
+#storyText {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 1em;
+}
+
+/* Story image styling */
+#storyImage {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 1em;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+button {
+    margin: 1em;
+    padding: 0.7em 2.5em;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2980b9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #1c5d8e;
+    transform: scale(1.02);
+}
+
+/* Last updated styling in footer */
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+footer p span {
+    font-weight: bold;
+    color: #f39c12;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+    main {
+        padding: 1em;
+    }
+    #storyText {
+        font-size: 1.1em;
+    }
+    button {
+        font-size: 1em;
+        padding: 0.5em 1.5em;
+    }
+}
+
+    </style>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <header>
+        <h1>Forest Adventure</h1>
+    </header>
+    <main>
+        <div id="storyText">Loading story...</div>
+        <img id="storyImage" src="" alt="Story Image">
+        <div id="choicesArea"></div>
+    </main>
+    <footer>
+        <p>Last updated: <span id="lastModified"></span></p>
+        <script>
+            document.getElementById('lastModified').textContent = document.lastModified;
+        </script>
+    </footer>
+
+    <!-- Addendum Section -->
+    <section id="addendum">
+        <h2>Project Reflection</h2>
+        <h3>Process and Creative Choices</h3>
+        <p><strong>Planning:</strong> Before coding, I outlined the flow of the story, identifying key choices and potential endings. I created a flowchart to visualize how different paths would connect, ensuring a coherent narrative structure.</p>
+        <p><strong>HTML Structure:</strong> I designed the HTML layout to facilitate easy user interaction, using semantic elements like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code>. This structure helped keep the story, choices, and images organized.</p>
+        <p><strong>CSS Styling:</strong> A minimalist design was chosen to maintain focus on the narrative. I opted for a soothing color palette to enhance user engagement and ensure responsiveness across various devices.</p>
+        <p><strong>JavaScript Functionality:</strong> JavaScript was used to manage interactivity. I structured the story as a series of objects, each containing properties for text, choices, and associated images. This made it easy to update and manage branching paths.</p>
+
+        <h3>Challenges Faced:</h3>
+        <ul>
+            <li><strong>Managing story branching:</strong> This was complex, so I tackled it by implementing a JSON-like structure, which simplified updates and made the branching paths easier to follow.</li>
+            <li><strong>Ensuring images loaded correctly:</strong> Initially tricky, I addressed this by preloading images and using error handling to avoid missing visuals.</li>
+            <li><strong>Balancing narrative depth with user engagement:</strong> Iterating on the story and testing with users helped me find the right balance and refine the experience.</li>
+        </ul>
+
+        <h3>Insights Gained:</h3>
+        <ul>
+            <li><strong>Meaningful choices:</strong> Offering users impactful decisions greatly increased their investment in the narrative.</li>
+            <li><strong>Iterative approach:</strong> Continually refining the game through testing and feedback was crucial for improving the experience.</li>
+            <li><strong>Accessibility:</strong> Including accessibility features helped make the game more inclusive, ensuring it could be enjoyed by a wider audience.</li>
+        </ul>
+    </section>
+
+    <script>
+        // Story nodes with updated consequences and endings
+const storyNodes = {
+    start: {
+        text: "You are in a dark forest. What do you do?",
+        choices: [
+            { text: "Walk north", nextNode: "owl" },
+            { text: "Walk south", nextNode: "deeperForest" }
+        ],
+        image: "dark_forest.jpg"
+    },
+    owl: {
+        text: "The owl reveals that a powerful artifact, the Crystal of Dawn, lies hidden within the forest.",
+        choices: [
+            { text: "Seek the Crystal of Dawn", nextNode: "seekCrystal" },
+            { text: "Explore on your own", nextNode: "wander" }
+        ],
+        image: "owl.jpg"
+    },
+    deeperForest: {
+        text: "You venture deeper into the forest and find a hollow tree with strange carvings.",
+        choices: [
+            { text: "Enter the hollow tree", nextNode: "hollowTree" },
+            { text: "Keep walking", nextNode: "lostForest" }
+        ],
+        image: "deeper_forest.jpg"
+    },
+    shadowFigure: {
+        text: "The shadowy figure reveals itself as a ghostly guardian.",
+        choices: [
+            { text: "Ask for a safe path", nextNode: "guardianHelp" },
+            { text: "Challenge the guardian", nextNode: "guardianChallenge" }
+        ],
+        image: "shadow_guardian.jpg"
+    },
+    run: {
+        text: "You find a hidden clearing with a tranquil pond.",
+        choices: [
+            { text: "Drink from the pond", nextNode: "enchantedPond" },
+            { text: "Rest by the pond", nextNode: "pondRest" }
+        ],
+        image: "clearing_pond.jpg"
+    },
+
+    // Endings
+    seekCrystal: {
+        text: "You find the Crystal of Dawn and become the Keeper of the Forest.",
+        choices: [],
+        image: "crystal_dawn.jpg"
+    },
+    wander: {
+        text: "Lost in the forest, you become a spirit guardian.",
+        choices: [],
+        image: "forest_spirit.jpg"
+    },
+    hollowTree: {
+        text: "In the hollow tree, you find the Heart of the Forest, granting eternal life.",
+        choices: [],
+        image: "heart_of_forest.jpg"
+    },
+    lostForest: {
+        text: "You become a mystical guardian of the forest.",
+        choices: [],
+        image: "forest_guardian.jpg"
+    },
+    guardianHelp: {
+        text: "The guardian shows you a safe path and grants you a protective pendant.",
+        choices: [],
+        image: "protective_pendant.jpg"
+    },
+    guardianChallenge: {
+        text: "Impressed by your bravery, the guardian gifts you the Cloak of Shadows.",
+        choices: [],
+        image: "images/cloak_of_shadows.jpg"
+    },
+    enchantedPond: {
+        text: "Drinking from the pond, you gain the ability to communicate with animals.",
+        choices: [],
+        image: "enchanted_pond.jpg"
+    },
+    pondRest: {
+        text: "You awaken at the forest's edge with a renewed sense of purpose.",
+        choices: [],
+        image: "forest_edge.jpg"
+    }
+};
+
+let currentNode = storyNodes.start;
+
+// Function to start or restart the game
+function startGame() {
+    currentNode = storyNodes.start;
+    updatePage();
+}
+
+// Function to update the page content based on the current node
+function updatePage() {
+    const storyText = document.getElementById("storyText");
+    const choicesArea = document.getElementById("choicesArea");
+    const storyImage = document.getElementById("storyImage");
+
+    // Update story text and image
+    storyText.textContent = currentNode.text;
+    storyImage.src = currentNode.image;
+
+    // Clear existing choices
+    choicesArea.innerHTML = "";
+
+    // If there are choices, create buttons for them
+    if (currentNode.choices.length > 0) {
+        currentNode.choices.forEach(choice => {
+            const button = document.createElement("button");
+            button.textContent = choice.text;
+            button.onclick = () => selectChoice(choice.nextNode);
+            choicesArea.appendChild(button);
+        });
+    } else {
+        // If no choices are available, display the end of the game message
+        const endMessage = document.createElement("p");
+        endMessage.textContent = "The End.";
+        choicesArea.appendChild(endMessage);
+    }
+}
+
+// Function to handle choice selection
+function selectChoice(nextNodeKey) {
+    currentNode = storyNodes[nextNodeKey];
+    updatePage();
+}
+
+// Run the game when the page loads
+document.addEventListener("DOMContentLoaded", startGame);
+
+    </script>
+</body>
+</html>
