@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage </title>
+    <style>
+        /* Reset and Font Import */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #80deea); /* Soft gradient background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background: #006064; /* Dark teal background */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Container Layout with Grid */
+.container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "menu main advertisement"
+        "footer footer footer";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    padding: 1rem;
+    flex: 1;
+}
+
+/* Sidebar Menu Styling */
+.menu-sidebar {
+    grid-area: menu;
+    background-color: #00796b; /* Medium teal background */
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.menu-sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 1rem 0;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+.menu-sidebar a:hover {
+    color: #ffcc80; /* Highlight on hover */
+}
+
+/* Main Content Styling */
+main {
+    grid-area: main;
+    background-color: #f1f8e9; /* Light green background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+h2 {
+    font-size: 1.8rem;
+    color: #388e3c; /* Darker green text */
+    margin-bottom: 1rem;
+}
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Input and Button Styles */
+input[type="text"] {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 3rem;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #81c784;
+    margin-top: 1rem;
+    transition: border 0.3s;
+}
+input[type="text"]:focus {
+    border-color: #4caf50;
+}
+button {
+    padding: 0.8rem 1.5rem;
+    background-color: #388e3c;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #4caf50;
+}
+.game-info p {
+    font-size: 1rem;
+    color: #2e7d32;
+}
+
+/* Advertisement Styling */
+.advertisement {
+    grid-area: advertisement;
+    background-color: #fffde7; /* Pale yellow background */
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.product-image {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+/* Footer Styling */
+footer {
+    grid-area: footer;
+    background-color: #006064; /* Dark teal background */
+    color: white;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+
+/* Large Screens (Desktops) */
+@media (min-width: 992px) {
+    .container {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 991px) and (min-width: 600px) {
+    .container {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "header header"
+            "menu main"
+            "advertisement main";
+    }
+
+    .menu-sidebar {
+        grid-area: menu;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    .advertisement {
+        grid-area: advertisement;
+    }
+}
+
+/* Small Screens (Mobile Phones) */
+@media (max-width: 599px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    header, footer, .menu-sidebar, .advertisement, main {
+        width: 100%;
+    }
+
+    .game-container {
+        margin-top: 1rem;
+    }
+
+    .product-image {
+        width: 80%;
+    }
+}
+
+    </style>
+    <link rel="stylesheet" href="layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>My Interactive Page</h1>
+    </header>
+
+    <div class="container">
+        <!-- Menu Sidebar -->
+        <aside class="menu-sidebar">
+            <nav>
+                <ul>
+                    <li><a href="https://www.google.com/search?q=Amazon+home+page" target="_blank">Home</a></li>
+                    <li><a href="https://www.aboutamazon.com/" target="_blank">About</a></li>
+                    <li><a href="https://aws.amazon.com/" target="_blank">Services</a></li>
+                    <li><a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=508510" target="_blank">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content: Coin Flip Game -->
+        <main>
+            <div class="game-container">
+                <h2>Flip the Coin!</h2>
+                <button id="flipButton">Flip Coin</button>
+                <p>Player's Flip: <span id="playerResult">Waiting...</span></p>
+                <p>Computer's Flip: <span id="computerResult">Waiting...</span></p>
+                <p id="gameOutcome">Result will appear here.</p>
+            </div>
+        </main>
+
+        <!-- Advertisement -->
+        <aside class="advertisement">
+            <a href="https://www.amazon.com/s?k=Electronics&i=todays-deals&crid=35Q596F22Z01G&sprefix=electronics%2Ctodays-deals%2C154&ref=nb_sb_noss_1" target="_blank">
+                <img src="advertisement.jpg" alt="SFW Product" class="product-image" />
+            </a>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+
+    <script type="text/javascript">
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+    </script>
+
+    <script> 
+        document.addEventListener("DOMContentLoaded", function () {
+    const flipButton = document.getElementById("flipButton");
+    const playerResult = document.getElementById("playerResult");
+    const computerResult = document.getElementById("computerResult");
+    const gameOutcome = document.getElementById("gameOutcome");
+
+    // Function to simulate a coin flip (returns "Heads" or "Tails")
+    function flipCoin() {
+        return Math.random() < 0.5 ? "Heads" : "Tails";
+    }
+
+    // Function to play the game
+    function playGame() {
+        // Player and computer each flip the coin
+        const playerFlip = flipCoin();
+        const computerFlip = flipCoin();
+
+        // Display the results
+        playerResult.textContent = playerFlip;
+        computerResult.textContent = computerFlip;
+
+        // Determine and display the game outcome
+        if (playerFlip === computerFlip) {
+            gameOutcome.textContent = "It's a tie!";
+        } else if (playerFlip === "Heads" && computerFlip === "Tails") {
+            gameOutcome.textContent = "Player wins!";
+        } else {
+            gameOutcome.textContent = "Computer wins!";
+        }
+    }
+
+    // Add event listener to the flip button
+    flipButton.addEventListener("click", playGame);
+});
+
+    </script>
+</body>
+</html>
